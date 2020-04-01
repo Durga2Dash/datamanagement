@@ -7,6 +7,9 @@ ARG JAR_FILE=target/datamanagement-0.0.1-SNAPSHOT.jar
 # cd /opt/app
 WORKDIR /opt/app
 
+#Creating Volume
+VOLUME /tmp
+
 # cp target/spring-boot-web.jar /opt/app/app.jar
 COPY ${JAR_FILE} app.jar
 
