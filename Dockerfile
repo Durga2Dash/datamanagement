@@ -1,17 +1,17 @@
 # For Java 8, try this
 FROM openjdk:8-jdk-alpine
 
-# Refer to Maven build -> finalName
+# Setting the data-management artifact path to a variable
 ARG JAR_FILE=target/datamanagement-0.0.1-SNAPSHOT.jar
 
-# cd /opt/app
+# Setting the working directory path
 WORKDIR /opt/app
 
-#Creating Volume
-VOLUME /tmp
-
-# cp target/spring-boot-web.jar /opt/app/app.jar
+# Copying the data-management artifact to override the app.jar
 COPY ${JAR_FILE} app.jar
 
-# java -jar /opt/app/app.jar
+# Starting the application
 ENTRYPOINT ["java","-jar","app.jar"]
+
+# Exposing the application port with embedded tomcat running
+EXPOSE 8080
